@@ -26,11 +26,10 @@ public class Releve {
     private Integer id;
     private Date periode;
     private Integer ancienIndex;
-    private Integer index;
+    private Integer nouveauIndex;
     private Integer consommation;
+    @Column(name = "id_user") // Renamed to follow Java naming convention
     private Integer idUser;
-
-
 
     @CreatedDate
     @Column(

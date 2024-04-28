@@ -12,6 +12,6 @@ import java.util.Date;
 public class ReleveRequest {
     private Date periode;
     private Integer ancienIndex;
-    private Integer index;
+    private Integer nouveauIndex;
     private Integer idUser;
 }

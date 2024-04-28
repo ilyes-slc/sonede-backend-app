@@ -12,11 +12,11 @@ public class ReleveService {
     private final ReleveRepository releveRepository;
 
     public Releve saveReleve(ReleveRequest releveRequest) {
-        int consommation = releveRequest.getIndex() - releveRequest.getAncienIndex();
+        int consommation = releveRequest.getNouveauIndex() - releveRequest.getAncienIndex();
         Releve releve = Releve.builder()
                 .periode(releveRequest.getPeriode())
                 .ancienIndex(releveRequest.getAncienIndex())
-                .index(releveRequest.getIndex())
+                .nouveauIndex(releveRequest.getNouveauIndex())
                 .consommation(consommation)
                 .idUser(releveRequest.getIdUser())
                 .build();
@@ -28,11 +28,11 @@ public class ReleveService {
         Releve releveToUpdate = releveRepository.findById(releveId)
                 .orElseThrow(() -> new NoSuchElementException("Releve with id " + releveId + " not found"));
 
-        int consommation = releveRequest.getIndex() - releveRequest.getAncienIndex();
+        int consommation = releveRequest.getNouveauIndex() - releveRequest.getAncienIndex();
 
         releveToUpdate.setPeriode(releveRequest.getPeriode());
         releveToUpdate.setAncienIndex(releveRequest.getAncienIndex());
-        releveToUpdate.setIndex(releveRequest.getIndex());
+        releveToUpdate.setNouveauIndex(releveRequest.getNouveauIndex());
         releveToUpdate.setConsommation(consommation);
         releveToUpdate.setIdUser(releveRequest.getIdUser());
 
