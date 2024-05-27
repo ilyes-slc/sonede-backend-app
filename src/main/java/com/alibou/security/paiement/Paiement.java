@@ -1,6 +1,10 @@
-package com.alibou.security.releve;
+package com.alibou.security.paiement;
 
-import jakarta.persistence.*;
+import jakarta.persistence.Column;
+import jakarta.persistence.Entity;
+import jakarta.persistence.EntityListeners;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.Id;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
@@ -12,7 +16,6 @@ import org.springframework.data.annotation.LastModifiedDate;
 import org.springframework.data.jpa.domain.support.AuditingEntityListener;
 
 import java.time.LocalDateTime;
-import java.util.Date;
 
 @Data
 @Builder
@@ -20,34 +23,26 @@ import java.util.Date;
 @AllArgsConstructor
 @Entity
 @EntityListeners(AuditingEntityListener.class)
-public class Releve {
+public class Paiement {
+
     @Id
     @GeneratedValue
     private Integer id;
-    private Date periode;
-    private Integer ancienIndex;
-    private Integer nouveauIndex;
-    private Integer consommation;
-    @Column(name = "id_user")
-    private Integer idUser;
+    private String date;
+    private Integer factureId;
+    private Double montant;
+    private Boolean effectue;
 
     @CreatedDate
-    @Column(
-            nullable = false,
-            updatable = false
-    )
+    @Column(nullable = false, updatable = false)
     private LocalDateTime createDate;
 
     @LastModifiedDate
     @Column(insertable = false)
     private LocalDateTime lastModified;
 
-
     @CreatedBy
-    @Column(
-            nullable = false,
-            updatable = false
-    )
+    @Column(nullable = false, updatable = false)
     private Integer createdBy;
 
     @LastModifiedBy
